@@ -1,0 +1,95 @@
+
+
+Creation of To Do list Explaination.
+    
+    -      creating a folder called components in src folder, create file called toDo.js in the new component we created ,then create ToDoForm.jsx , EditToDoForm.jsx and lastly ToDoWrapper.jsx. 
+
+    -   Then in App.jsx render the ToDoWrapper component. 
+
+    -   Then in TodoForm component , create a form-tag and its name shud be ToDo Form , then we create an input tag with a type of text and he placeHolder will be "What is the task Today?"
+
+    -   Then we create a button of the type Submit.
+
+    -   In the ToDoWrapper component we will render the ToDoForm component.
+
+    -   Going back to the TodoForm comp where the button we create will be named as Add Task.
+    
+    -   To keep track of what the user types we need to import the useState , and we create a state called value and setValue which will be an empty string.
+
+    -   on the input we add the onChange event and its name is  in Arrow function and pass and event (e), for now we use console.log() the event.target.value , this for testing.
+
+    -   after the above step we need to save it to a state that is we remove the console.log and we use the state we created which was setValue.
+
+    -   we need to add a function that captures the value of the state when we submit the from what we are goin to do is that in the form tag we add an event called onSubmit ang handleSubmit will passed as its function.
+
+    -   Then we define the handleSubmit function which takes and event and by default when we submit the form the page reloads  , inorder to prevent that we need to add a function that is e.preventDefault() ,then for now we use the console.log(value). And now the problem here is that we have the value here and we need to pass this value to the ToDoState.
+
+    -   then we create the state in the parent component that is the ToDoWrapper then we create the state called todos and setTodos and set its value to empty array.
+
+    -   Now we have to pass the data from the TodoForm to the parent component that is the ToDoWrapper ? how??
+
+    - the solution is by passing via props now in the parent component wher we have rendered the TodoForm we have to add a property called addTodo = {addToDo} here the addToDo is the function which we will be defiining.
+
+    -   then we define the function addToDo and it wud take the value "todo" ,
+    and here we use the setTodo state and we need to make a copy of the current todos i.e., by using spread operator soo , setTodo([...todos,])
+    , then we add the id which will be : uuidv4() and adding the task will be a 'todo' which we are passing in setting by default it will be completed will be false and also isEditing will be false .  dont forget to import uuid that is import { v4 as uuidv4 } from "uuid"; then below this import statement we call the uuidv4();
+
+    -   then we pass the prop addTodo in the TodoForm and instead of the console.log(value) we change the console.log to addTodo prop which was passed.
+
+    -   this is hw we pass the data from the TodoForm to the ToDoWrapper.
+
+    -   goin back to ToDoWrapper we add a console.log(todos) to check whether its working or not.
+
+    -   goin to TodoForm component in the input field which we created we add the value which will be equal to the value itself.
+
+    -   after we submit the form we need to clear the form soo we take the state setValue as place in the handleSubmit which we keep the setValue("")
+
+    -   now the code is done we need to display the added todos.
+
+    -   now we are working with the ToDo component to create the design we added a paragraph tag witha  random value , then we create a div to store the icons. The icons used are faPentosquare , faTrash. will be added ti the new div which was created.
+
+    -    moving to the ToDoWrapper component and we render the ToDo component. After doing this much we can finally see the Added to-do list.
+
+     -  to generate a toDo for each value in the state. Then we add the curly brackets and inside we use the todos.map method which takes the todo and the index as argument and render the ToDo component inside this. and remove the ToDo component which was outside the curly brackets.
+
+     -  the rendered component toDo we add a property task and pass its value ad "todo" ,  also create a prop called key and pass the value index.
+
+     -  To use the props which we created we go to the ToDo component and pass the task and the key as props within the curly brackets.
+
+    -   And in the paragraph tag we created we need to pass {task.task}.
+
+    -   goin back to ToDoWrapper comp and in the browser check for results.
+
+    -   Now in the ToDoWrapper comp above the todo.map we add a h1 tag with the value "Get Things Done ?"
+
+    -   then in ToDo comp in the paragraph tag add a className and it value shud be {`${task.completed ? "completed" : " "}`} , also adding an onClick value that shud be an arrow function and pass prop toggleComplete(task.id) and after this we pass the toggleComplete prop aside of the task prop separated by a comma.
+
+    -   then we go to ToDoWrapper comp and we pass the prop toggleComplete next to the key prop and set the value which will be the function toggleComplete which will be defined later.
+
+    -   now we define the toggleComplete function it will take an id and we pass the value setTodos(todos.map(todo => todo.id === id ? {...todo , completed: !todo.completed} : todo )) 
+
+    -   NEXT IS THE MAIN STEP WE SET UP THE DELETE FUNCTION.
+
+    -   NOW we are adding a new property deleteToDo and its value will be eqaul to deleteToDo which is a function which we will define later.
+
+    -   now we define the function which was created that is deleteToDo which we give the id as a parameter and we use setTodos(todos.filter(todo => todo.id !== id)).
+
+    -   moving to the ToDo comp on the FaTrash icon we add a onclick event and using arrow function we name it deleteTodo(task.id), and then we pass this event as a prop to this comp next to toggleComplete.
+
+    -   WE ARE ALSO TRYING THE TO EDIT THE FORM.
+
+    -   in the icon faPentosquare we add an onClick event which is also an arrow function and we name the function as editTodo(task.id) , and then we pass the prop in the comp side of deleteTodo.
+
+    -   Then we go to the ToDoWrapper to createt he prop aside of deleteTodo we add editTodo = {editTodo} which is a function which will be defined later.
+
+    -   now we create the function editTodo where we pass an id and set its value setTodos(todos.map(todo => todo.id === id  ? {...todo, isEditing : !todo.isEditing } : todo )).
+
+    -   after this we need to set up the EditToDoForm , then we copy everything in the TodoForm and paste it in the EditToDoForm   and we make the changes that is change the palceholder value to "Update the task" and instead of Add task we change it to Update Task , also instead of addToDo we change it to editTodo(value ,task.id) , and also we change the prop which was passed from addToDo to editTodo also passing task as a prop too.
+
+    -   and back in isEditing , that whenn isEditing is true we want to display the EditToDoForm only when its true so we pass todo.isEditing ? (<EditToDoForm/> :(<todo task ...) ) basically its a condititional rendering
+
+    -   now we define the function which we defined in EditToDoForm comp , then we go back to the ToDoWrapper comp where we write editTodo = {editTask} task = {todo} aside where the we rendered the comp EditToDoForm.
+
+    -   then we define the function that is editTask and passing id and task as parameters and setting the value as setTodos(todos.map(todo => todo.id === id  ? {...todo , task , isEditing : !todo.isEditing} : todo))
+
+    -   to show up the value in the udpate task input we go back to the EditToDoForm comp set the state value to task.task 

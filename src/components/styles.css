@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 4rem;
+}
+
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #38bdf8;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.TodoWrapper {
+  background-color: #1e293b;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.TodoForm {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-input {
+  background-color: #0f172a;
+  border: 1px solid #38bdf8;
+  padding: 0.65rem 1rem;
+  border-radius: 5px;
+  color: #f8fafc;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.todo-input::placeholder {
+  color: #94a3b8;
+}
+
+.todo-btn {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.todo-btn:hover {
+  background-color: #0ea5e9;
+}
+
+.Todo {
+  background-color: #334155;
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.Todo:hover {
+  background-color: #3b465a;
+}
+
+.completed {
+  color: #94a3b8;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.incompleted {
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  font-size: 1.1rem;
+  margin-left: 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #0ea5e9;
+}
+
+.delete-icon:hover {
+  color: #ef4444;
+}
